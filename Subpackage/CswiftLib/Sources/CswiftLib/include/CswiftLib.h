@@ -43,7 +43,7 @@ struct MyError{
 void greetMe();
 
 void no_params_no_return();
-int no_params_int_retunr();
+int no_params_int_return();
 
 struct Employee some_params_struct_return(uint64_t citizen_id);
 uint64_t struct_params_type_return(struct  Employee employee);
