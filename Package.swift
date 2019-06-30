@@ -1,20 +1,16 @@
 // swift-tools-version:5.1
-// The swift-tools-version declares the minimum version of Swift required to build this package.
-
 import PackageDescription
 
 let package = Package(
     name: "swift-c-playground",
     dependencies: [
-        // Dependencies declare other packages that this package depends on.
-        // .package(url: /* package url */, from: "1.0.0"),
+        // Subpackage is not a good practice and "Subpackage" directory has no meaning for the SPM. I do recommend to store local packages outside each other's directories. SPM does not allow local packages to be set as editable and I want to keep both in one repo for convinience.
+        .package(path: "Subpackage/CswiftLib")
     ],
     targets: [
-        // Targets are the basic building blocks of a package. A target can define a module or a test suite.
-        // Targets can depend on other targets in this package, and on products in packages which this package depends on.
         .target(
             name: "swift-c-playground",
-            dependencies: []),
+            dependencies: ["CswiftLib"]),
         .testTarget(
             name: "swift-c-playgroundTests",
             dependencies: ["swift-c-playground"]),
