@@ -54,3 +54,31 @@ void copy_employee_to_heap(struct Employee source, struct Employee **destination
         (*destination)->last_name = strdup(source.last_name);
     }    
 }
+
+void print_employee(struct Employee employee){
+    printf("Struct Employee: (");
+
+    printf("citizen_id: %lu; ", employee.citizen_id);
+
+    if (employee.first_name != NULL){
+        printf("first_name: %s; ", employee.first_name);
+    } else {
+        printf("first_name: <NULL>; ");
+    }
+
+    if (employee.last_name != NULL){
+        printf("last_name: %s; ", employee.last_name);
+    } else {
+        printf("last_name: <NULL>; ");
+    }
+
+    printf("salary: %lu; ", employee.salary);
+
+    if (employee.is_married == true) {
+        printf("<married>");
+    } else {
+        printf("<single>");
+    }
+
+    printf(")\n");
+}

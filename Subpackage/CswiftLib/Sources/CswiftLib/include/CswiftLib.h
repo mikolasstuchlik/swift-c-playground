@@ -6,13 +6,21 @@
 #include <stdbool.h>
 #include <stdint.h>
 
+#ifndef __clang__ 
+
+#define _Nonnull
+#define _Nullable
+#define _Null_unspecified
+
+#endif
+
 enum WeekDay{
     mon, tue, wen, thu, fri, sat, sun
 };
 
 struct Employee{
-    char *first_name;
-    char *last_name;
+    char * _Nullable first_name;
+    char * _Nullable last_name;
     bool is_married;
     uint64_t salary;
 
@@ -23,11 +31,11 @@ typedef bool (*HireEmployee)(struct Employee);
 typedef struct Employee (*FireEmployee)(uint64_t);
 
 struct Company{
-    struct Employee *employees;
+    struct Employee * _Nonnull employees;
     uint16_t employees_length;
 
-    HireEmployee hire_employee;
-    FireEmployee fire_employee;
+    HireEmployee _Nonnull hire_employee;
+    FireEmployee _Nonnull fire_employee;
 };
 
 union MyProperty{
@@ -36,7 +44,7 @@ union MyProperty{
 };
 
 struct MyError{
-    char *description;
+    char * _Nonnull description;
     int code;
 };
 
@@ -47,8 +55,10 @@ int no_params_int_return();
 
 struct Employee some_params_struct_return(uint64_t citizen_id);
 uint64_t struct_params_type_return(struct  Employee employee);
-uint64_t struct_pointer_param_type_return(struct Employee *employee_pointer);
+uint64_t struct_pointer_param_type_return(struct Employee * _Nullable employee_pointer);
 
-void copy_employee_to_heap(struct Employee source, struct Employee **destination);
+void copy_employee_to_heap(struct Employee source, struct Employee * _Nullable * _Nullable destination);
+
+void print_employee(struct Employee employee);
 
 #endif /* C_SWIFT_LIB_H */
