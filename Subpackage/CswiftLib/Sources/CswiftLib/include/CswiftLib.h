@@ -19,7 +19,7 @@ enum WeekDay{
 };
 
 struct Employee{
-    char * _Nullable first_name;
+    char const * _Nullable first_name;
     char * _Nullable last_name;
     bool is_married;
     uint64_t salary;
@@ -39,7 +39,7 @@ struct Company{
 };
 
 union MyProperty{
-    struct Company companyOwned;
+    uint8_t total_friend_debt[8];
     uint64_t total_debt;
 };
 
@@ -60,5 +60,7 @@ uint64_t struct_pointer_param_type_return(struct Employee * _Nullable employee_p
 void copy_employee_to_heap(struct Employee source, struct Employee * _Nullable * _Nullable destination);
 
 void print_employee(struct Employee employee);
+
+void test_block(uint64_t a_number, void (* _Nonnull block)(uint64_t));
 
 #endif /* C_SWIFT_LIB_H */

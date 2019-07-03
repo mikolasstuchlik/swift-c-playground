@@ -82,3 +82,7 @@ void print_employee(struct Employee employee){
 
     printf(")\n");
 }
+
+void test_block(uint64_t a_number, void (* _Nonnull block)(uint64_t)) {
+    block(a_number);
+}
